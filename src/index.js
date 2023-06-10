@@ -1,7 +1,7 @@
-const { REST } = require("@discordjs/rest"); // Define REST.
-const { Routes } = require("discord-api-types/v9"); // Define Routes.
-const fs = require("fs"); // Define fs (file system).
-const { Client, Collection } = require("discord.js"); // Define Client, Intents, and Collection.
+const { REST } = require("@discordjs/rest"); 
+const { Routes } = require("discord-api-types/v9"); 
+const fs = require("fs");
+const { Client, Collection } = require("discord.js"); 
 const { GatewayIntentBits } = require("discord.js");
 const { status } = require('minecraft-server-util');
 
@@ -18,9 +18,8 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
   ],
 }); // Connect to our discord bot.
-const commands = new Collection(); // Where the bot (slash) commands will be stored.
-const commandarray = []; // Array to store commands for sending to the REST API.
-// Execute code when the "ready" client event is triggered.
+const commands = new Collection(); 
+const commandarray = [];
 client.once("ready", () => {
 
   client.channels.fetch(settings.discord.channels.alert.id)
@@ -81,7 +80,6 @@ client.on("interactionCreate", async interaction => {
 let failedPings = 0;
 let serverOnline = false;
 let first = true
-// Function to check server status and report to Discord
 async function checkServerStatus() {
   try {
     // Ping the server
@@ -89,13 +87,10 @@ async function checkServerStatus() {
     let online = new Boolean()
     const SVRstatus = await status(settings.server.address).catch((e) => {
       online = false
-      //console.log("OFFLINE")
     })
     if (SVRstatus?.roundTripLatency) {
       online = true
-      //console.log("ONLINE")
     }
-    // If the server is online, reset the ping counter and send message if it was offline
     if (online) {
       if (!serverOnline) {
         if (!first) {
@@ -106,13 +101,11 @@ async function checkServerStatus() {
       failedPings = 0;
       serverOnline = true;
     }
-    // If the server is offline, increment the ping counter
     else {
       failedPings++;
       serverOnline = false;
     }
     first = false
-    // If the server hasn't responded for 3 pings in a row, report to Discord
     //console.log( failedPings, serverOnline, online )
     if (failedPings >= 3 && !serverOnline) {
       const message = `The Minecraft server at ${settings.server.address}:${settings.server.port} is not responding. :(`;
@@ -125,7 +118,6 @@ async function checkServerStatus() {
   }
 }
 
-// check every 10 sec
 setInterval(checkServerStatus, 10000);
 
 let oldIP = ""
