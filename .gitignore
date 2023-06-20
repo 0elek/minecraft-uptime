@@ -32,4 +32,6 @@ dist/
 
 # 
 settings.json
+.env 
+/dist
 #
