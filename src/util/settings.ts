@@ -11,7 +11,7 @@ const SettingsSchema = z.object({
     }),
     discord: z.object({
         token: z.string(),
-        invite: z.string().url(),
+        invite: z.string().url().optional(),
         channels: z.object({
             alert: z.object({
                 id: z.string(),
@@ -23,8 +23,8 @@ const SettingsSchema = z.object({
     onHost: z.boolean(),
     // moved invite to discord 
     other: z.object({
-        website: z.string().url(),
-        wiki: z.string().url(),
+        website: z.string().url().optional(),
+        wiki: z.string().url().optional(),
     }),
 });
 
