@@ -32,8 +32,9 @@ client.once("ready", () => {
     .catch(console.error);
 
   const commandFiles = fs
-    .readdirSync("src/Commands")
-    .filter(x => x.endsWith(".js"))
+    .readdirSync("dist/Commands")
+    .filter(x => x.endsWith(".js"));
+    
 
 
   for (const file of commandFiles) {
