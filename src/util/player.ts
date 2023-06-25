@@ -74,7 +74,7 @@ const PlayerBuilder = (name: string, uuid: string, skin: string | undefined, cap
             value: minecraftcapes_cape
         })
     }
-    // embed.setImage(`https://nmsr.nickac.dev/fullbody/${uuid}`);
+    embed.setImage(`https://nmsr.nickac.dev/fullbody/${uuid}`);
 
     return embed
 }
