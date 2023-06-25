@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction, EmbedBuilder, Embed } from "discord.js";
-import PlayerBuilder from "../util/player";
+// import PlayerBuilder from "../util/player";
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -30,9 +30,10 @@ module.exports = {
     const { skin, cape } = await get_skins(uuid);
     const optifine_cape = await get_optifine_cape(name);
     const minecraftcapes_cape = await get_minecraftcapes_cape(uuid);
-    let embed = PlayerBuilder(name, uuid, skin, cape, optifine_cape, minecraftcapes_cape)
+    // let embed = PlayerBuilder(name, uuid, skin, cape, optifine_cape, minecraftcapes_cape)
 
-    interaction.reply({ embeds: [embed] })
+    // interaction.reply({ embeds: [embed] })
+    interaction.reply("cool");
   },
 };
 

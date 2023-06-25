@@ -1,30 +1,43 @@
-// import z from "zod"
+import z from "zod"
 import { EmbedBuilder } from "@discordjs/builders"
 
-// const PlayerSchema = z.object(
-//     {
-//         name: z.string(),
-//         uuid: z.string(),
-//         textures: z.object({
-//             skin: z.string(),
-//             cape: z.string().optional(),
-//             optifineCape: z.string().optional(),
-//             minecraftcapes: z.string().optional(),
-//         })
-//     }
-// )
+const PlayerSchema = z.object(
+    {
+        name: z.string(),
+        uuid: z.string(),
+        textures: z.object({
+            skin: z.string(),
+            cape: z.string().optional(),
+            optifineCape: z.string().optional(),
+            minecraftcapes: z.string().optional(),
+        })
+    }
+)
+
+
+type Player = {
+    name: string,
+    uuid: string,
+    texture: {
+        skin: string,
+        cape: string | undefined,
+        optifineCape: string | undefined,
+        minecraftcapes_cape: string | undefined,
+    }
+}
 
 const PlayerBuilder = (name: string, uuid: string, skin: string | undefined, cape: string | undefined, optifineCape: string | undefined, minecraftcapes_cape: string | undefined) => {
 
-    // let p = PlayerSchema.parse({
-    //     name: name,
-    //     uuid: uuid,
-    //     texture:{
-    //         skin: typeof skin == "string" ? skin : undefined,
-    //         cape: typeof cape == "string" ? cape : undefined,
-    //         optifineCape: typeof optifineCape == "string" ? optifineCape : undefined,
-    //     }
-    // })
+    PlayerSchema.parse({
+        name: name,
+        uuid: uuid,
+        textures: {
+            skin: skin,
+            cape: cape,
+            optifineCape: optifineCape,
+            minecraftcapes: minecraftcapes_cape
+        }
+    });
 
     let embed = new EmbedBuilder()
 
@@ -61,6 +74,8 @@ const PlayerBuilder = (name: string, uuid: string, skin: string | undefined, cap
             value: minecraftcapes_cape
         })
     }
+    // embed.setImage(`https://nmsr.nickac.dev/fullbody/${uuid}`);
+
     return embed
 }
 
