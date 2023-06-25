@@ -44,7 +44,7 @@ client.once("ready", () => {
   }
   const rest = new REST({ version: "9" }).setToken(settings.discord.token); // Define "rest" for use in registering commands
   // Register slash commands.
-  ; (async () => {
+  (async () => {
     try {
       console.log("Started refreshing application (/) commands.");
 

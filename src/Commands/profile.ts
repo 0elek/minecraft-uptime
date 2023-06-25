@@ -33,7 +33,6 @@ module.exports = {
     let embed = PlayerBuilder(name, uuid, skin, cape, optifine_cape, minecraftcapes_cape)
 
     interaction.reply({ embeds: [embed] })
-    interaction.reply("cool");
   },
 };
 
