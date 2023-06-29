@@ -5,7 +5,7 @@
 (avg monthly cost is $0.8 and anything under $5 is free)
 
 ### Localy:
-`requires: node@lts, npm`
+`requires: node@>=16.x, npm`
 
 + make a .env file in the rood directory according to .env_example
 
