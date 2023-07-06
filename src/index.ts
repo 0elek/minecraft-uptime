@@ -34,7 +34,7 @@ client.once("ready", () => {
   const commandFiles = fs
     .readdirSync("dist/Commands")
     .filter(x => x.endsWith(".js"));
-    
+
 
 
   for (const file of commandFiles) {
@@ -53,7 +53,7 @@ client.once("ready", () => {
         console.log("Client user is null, exiting.");
         process.exit(1);
       }
-      
+
       await rest.put(Routes.applicationCommands(client.user.id), {
         body: commandarray,
       });
@@ -80,8 +80,6 @@ client.on("interactionCreate", async interaction => {
     });
   }
 });
-
-
 
 
 let failedPings = 0;
