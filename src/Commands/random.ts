@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('The minimum number').setRequired(true))
     .addIntegerOption(option => option.setName('max')
     .setDescription('The maximum number').setRequired(true)),
-  execute: async (interaction: { reply: (arg0: { content: string; }) => any; }, client: { ws: { ping: any; }; }, settings: { server: { address: string; }; }) => {
+  execute: async (interaction: { reply: (arg0: { content: string; }) => any; }) => {
     let min = interaction.reply.arguments.getInteger('min');
     let max = interaction.reply.arguments.getInteger('max');
     let random = Math.floor(Math.random() * (max - min + 1)) + min;
