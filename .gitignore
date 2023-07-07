@@ -26,10 +26,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# out dir
-dist/
-
-
 # 
 settings.json
 .env 
