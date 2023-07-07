@@ -8,10 +8,17 @@ module.exports = {
     .setDescription('The minimum number').setRequired(true))
     .addIntegerOption(option => option.setName('max')
     .setDescription('The maximum number').setRequired(true)),
-  execute: async (interaction: { reply: (arg0: { content: string; }) => any; }) => {
-    let min = interaction.reply.arguments.getInteger('min');
-    let max = interaction.reply.arguments.getInteger('max');
+  async execute(interaction: any, client: any, settings: any) {
+    const min = interaction.options.getInteger('min');
+    const max = interaction.options.getInteger('max');
+
+    if (min > max) {
+      interaction.reply({ content: `The minimum number must be less than the maximum number.`});
+      return;
+    }
+
     let random = Math.floor(Math.random() * (max - min + 1)) + min;
-    return interaction.reply({ content: `Your random number is ${random}` });
+    interaction.reply({ content: `Your random number is ${random}`});
+
   },
 };

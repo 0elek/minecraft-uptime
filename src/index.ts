@@ -41,6 +41,7 @@ client.once("ready", () => {
     const command: any = require(`./Commands/${file}`);
     commands.set(command.data.name, command);
     commandarray.push(command.data.toJSON());
+    console.log(`Loaded command ${command.data.name}`);
   }
   const rest = new REST({ version: "9" }).setToken(settings.discord.token); // Define "rest" for use in registering commands
   // Register slash commands.
